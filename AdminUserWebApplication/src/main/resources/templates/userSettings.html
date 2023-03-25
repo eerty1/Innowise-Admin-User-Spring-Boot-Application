@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>InnowiseAdminUserApplication</title>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1 style="text-align: center">List of properties to change:</h1>
+<div style="text-align: center">
+    <p th:text=" 'Current user: ' + ${user.getUsername()}"></p>
+    <form th:action="@{/userpool/update/{id}(id = ${user.id})}" th:method="POST">
+        <div>
+            <input placeholder="Full name" th:name="fullName" type="text"/>
+        </div>
+        <div>
+            <input placeholder="Position" th:name="position" type="text"/>
+        </div>
+        <div>
+            <input placeholder="Department" th:name="department" type="text"/>
+        </div>
+        <div>
+            <input placeholder="Address" th:name="address" type="text"/>
+        </div>
+        <div>
+            <input placeholder="Phone number" th:name="phoneNumber" type="text"/>
+        </div>
+        <input type="submit" value="Submit changes"/>
+    </form>
+    <p></p>
+    <form th:action="@{/userpool/update/{id}(id = ${user.id})}" th:method="DELETE">
+        <input type="submit" value="Delete"/>
+    </form>
+    <p></p>
+
+    <th><a th:href="@{/userpool}"> Back to userpool </a></th>
+</div>
+</body>
+</html>

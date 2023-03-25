@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>InnowiseAdminUserApplication</title>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="form-control" style="text-align: justify">
+    <h1>Register your user here</h1>
+    <!--    th:action="@{/registration}"-->
+    <form id="registerForm" th:method="POST" th:object="${user}">
+        <label for="username">Username: </label>
+        <input id="username" name="username" type="text"/>
+        <span class="validationError" th:errors="*{username}" th:if="${#fields.hasErrors('username')}">User error</span>
+        <br/>
+
+        <label for="password">Password: </label>
+        <input id="password" name="password" type="password"/>
+        <span class="validationError" th:errors="*{password}" th:if="${#fields.hasErrors('password')}">User error</span>
+        <br/>
+
+        <label for="role">Role: </label>
+        <input id="role" name="role" th:each="roles : ${role}" th:text="${roles.name()}" th:value="${roles.name()}" type="radio"/>
+        <span class="validationError" th:errors="*{role}" th:if="${#fields.hasErrors('role')}">User error</span>
+        <br/>
+
+        <label for="fullName">Full name: </label>
+
+        <input id="fullName" name="fullName" type="text"/>
+        <span class="validationError" th:errors="*{fullName}" th:if="${#fields.hasErrors('fullName')}">User error</span>
+        <br/>
+
+        <label for="position">Position: </label>
+        <input id="position" name="position" type="text"/>
+        <span class="validationError" th:errors="*{position}" th:if="${#fields.hasErrors('position')}">User error</span>
+        <br/>
+
+        <label for="department">Department: </label>
+        <input id="department" name="department" type="text"/>
+        <span class="validationError" th:errors="*{department}" th:if="${#fields.hasErrors('department')}">User error</span>
+        <br/>
+
+        <label for="address">Address: </label>
+        <input id="address" name="address" type="text"/>
+        <span class="validationError" th:errors="*{address}" th:if="${#fields.hasErrors('address')}">User error</span>
+        <br/>
+
+        <label for="phoneNumber">Phone Number: </label>
+        <input id="phoneNumber" name="phoneNumber" type="text"/>
+        <span class="validationError" th:errors="*{phoneNumber}" th:if="${#fields.hasErrors('phoneNumber')}">User error</span>
+        <br/>
+
+        <input type="submit" value="Register"/>
+        <br>
+        <br>
+        <th><a th:href="@{/login}"> To login </a></th>
+        <br>
+        <br>
+        <th><a th:href="@{/userpool}"> To userpool </a></th>
+    </form>
+</div>
+</body>
+</html>

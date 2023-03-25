@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>InnowiseAdminUserApplication</title>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1 style="text-align: center">Login your user here</h1>
+<div class="form-control" style="text-align: center">
+    <form method="post" th:action="@{/login}">
+        <div>
+            <input name="username" placeholder="Username" type="text"/>
+        </div>
+        <div>
+            <input name="password" placeholder="Password" type="password"/>
+        </div>
+        <input type="submit" value="Log in"/>
+        <!--        <th><a th:href="@{/registration}"> Register new user </a></th>   in case you decided to permit all users access to registration page -->
+    </form>
+</div>
+</body>
+</html>
