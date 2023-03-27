@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+
 @RestController
 public class RegistrationRestController {
     private final JdbcUserRepository jdbcUserRepository;
@@ -21,7 +22,6 @@ public class RegistrationRestController {
 
     @PostMapping(path = "/registration", consumes = "application/json")
     public User registerUser(@Valid @RequestBody User user) {
-
         return jdbcUserRepository.save(user.toUser(passwordEncoder));
     }
 }

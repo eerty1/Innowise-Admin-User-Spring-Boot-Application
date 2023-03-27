@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class User implements UserDetails {
     private static final String NOT_BLANK = "must not be blank";
     private static final String NOT_NULL = "must not be null";

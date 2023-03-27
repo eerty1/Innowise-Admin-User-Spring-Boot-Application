@@ -29,7 +29,6 @@
         <br/>
 
         <label for="fullName">Full name: </label>
-
         <input id="fullName" name="fullName" type="text"/>
         <span class="validationError" th:errors="*{fullName}" th:if="${#fields.hasErrors('fullName')}">User error</span>
         <br/>
