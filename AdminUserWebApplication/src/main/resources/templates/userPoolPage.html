@@ -3,31 +3,29 @@
       xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>InnowiseAdminUserApplication</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" type="text/css">
     <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
-    <script crossorigin="anonymous"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1 class="container">List of existing users:</h1>
+<h1 class="container user-pool-page__title">List of existing users:</h1>
 <table class="container">
     <tr>
-        <th class="form-control" style="text-align: center">id</th>
+        <th class="form-control text-location">id</th>
         <th></th>
-        <th class="form-control" style="text-align: center">username</th>
+        <th class="form-control text-location">username</th>
         <th></th>
-        <th class="form-control" style="text-align: center">full name</th>
+        <th class="form-control text-location">full name</th>
         <th></th>
-        <th class="form-control" style="text-align: center">position</th>
+        <th class="form-control text-location">position</th>
         <th></th>
-        <th class="form-control" style="text-align: center">department</th>
+        <th class="form-control text-location">department</th>
         <th></th>
-        <th class="form-control" style="text-align: center">address</th>
+        <th class="form-control text-location">address</th>
         <th></th>
-        <th class="form-control" style="text-align: center">phone number</th>
+        <th class="form-control text-location">phone number</th>
         <th></th>
-        <th class="form-control" sec:authorize="hasAuthority('ADMIN')" style="text-align: center">edit</th>
+        <th class="form-control text-location" sec:authorize="hasAuthority('ADMIN')">edit</th>
     </tr>
     <tr th:each="user : ${users}">
         <td class="form-control" th:text="${user.getId()}"></td>
@@ -45,14 +43,14 @@
         <td class="form-control" th:text="${user.getPhoneNumber()}"></td>
         <th></th>
         <td class="form-control" sec:authorize="hasAuthority('ADMIN')">
-            <a th:href="@{/userpool/update/{id}(id = ${user.id})}"> edit </a>
+            <a th:href="@{/userpool/get/{id}(id = ${user.id})}"> edit </a>
         </td>
     </tr>
 </table>
 
-<div class="container" style="text-align: center">
+<div class="container text-location">
     <form th:action="@{/logout}" th:method="POST">
-        <input type="submit" value="Sing out"/>
+        <input class="button user-pool-page__button" type="submit" value="Sing out"/>
     </form>
     <th sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/registration}"> Register new user </a></th>
 </div>

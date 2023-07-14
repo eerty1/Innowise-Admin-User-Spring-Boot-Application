@@ -6,7 +6,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,17 +19,17 @@ import java.util.List;
 @Setter
 @ToString
 public class User implements UserDetails {
-    private static final String NOT_BLANK = "must not be blank";
-    private static final String NOT_NULL = "must not be null";
-    private static final String NOT_IN_RANGE = "must not be longer than {max}";
-    private static final String DOESNT_MATCH_FORMAT = "must match belarusian format";
-    private static final String PHONE_REGEX = "^(\\+375)(29|25|44|33)(\\d{3})(\\d{2})(\\d{2})$";
+    public static final String NOT_BLANK = "must not be blank";
+    public static final String NOT_NULL = "must not be null";
+    public static final String NOT_IN_RANGE = "must not be longer than {max}";
+    public static final String DOESNT_MATCH_FORMAT = "must match belarusian format";
+    public static final String PHONE_REGEX = "^(\\+375)(29|25|44|33)(\\d{3})(\\d{2})(\\d{2})$";
     private Long id;
     @NotBlank(message = NOT_BLANK)
-    @Size(max = 30, message = "username" + NOT_IN_RANGE)
+    @Size(max = 30, message = NOT_IN_RANGE)
     private String username;
     @NotBlank(message = NOT_BLANK)
-    @Size(max = 100, message = "password" + NOT_IN_RANGE)
+    @Size(max = 100, message = NOT_IN_RANGE)
     private String password;
     @NotNull(message = NOT_NULL)
     private Role role;

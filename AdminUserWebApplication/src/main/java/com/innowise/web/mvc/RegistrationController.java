@@ -2,11 +2,8 @@
 //
 //import com.innowise.model.Role;
 //import com.innowise.model.User;
-//import com.innowise.model.mapper.UserMapper;
-//import com.innowise.repository.JdbcUserRepository;
-//import org.mapstruct.Mapper;
+//import com.innowise.repository.crud_service.mvc.UserCrudService;
 //import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.validation.Errors;
 //import org.springframework.web.bind.annotation.GetMapping;
@@ -21,13 +18,11 @@
 //
 //@Controller
 //public class RegistrationController {
-//    private final JdbcUserRepository jdbcUserRepository;
-//    private final PasswordEncoder passwordEncoder;
+//    private final UserCrudService userCrudService;
 //
 //    @Autowired
-//    public RegistrationController(JdbcUserRepository jdbcUserRepository, PasswordEncoder passwordEncoder) {
-//        this.jdbcUserRepository = jdbcUserRepository;
-//        this.passwordEncoder = passwordEncoder;
+//    public RegistrationController(UserCrudService userCrudService) {
+//        this.userCrudService = userCrudService;
 //    }
 //
 //    @ModelAttribute(name = "user")
@@ -47,11 +42,6 @@
 //
 //    @PostMapping("/registration")
 //    public String registerUser(@Valid User user, Errors errors) {
-//        if (errors.hasErrors()) {
-//            return "userRegistrationPage";
-//        }
-//        jdbcUserRepository.save(user.toUser(passwordEncoder));
-//
-//        return "userRegistrationPage";
+//        return userCrudService.registerNewUser(user, errors);
 //    }
 //}

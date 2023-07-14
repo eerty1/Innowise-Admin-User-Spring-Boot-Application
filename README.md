@@ -4,22 +4,20 @@ Employee tracking system divided on admins and usual users
 
 ## Task Requirements
 
-Сортировка мячей:
+Implement a data accounting system for company employees
+Admin can: 
+* Edit employee data
+* Add new employees
+* Delete existing employee
+* Read employee data
 
-Реализовать систему учета данных работников компаний.
-Админ может: 
-* редактировать 
-* добавлять 
-* удалять 
-* просматривтаь информация о сотрудниках 
+Employee can: 
 
-Cотрудник может: 
+* Read employee data
 
-* просматривать
+Passwords in the database should be stored only in hashed form, any hash function could be used.
 
-Пароли в базе данных хранить только в хэшированном виде, хэш-функцию выбирается любая.
-
-Стек: **Java 11+**, **Spring(Core, Boot, MVC, Data, Security)**, **Lombok**, **MapStruct**, любая реляционная субд на ваш выбор.
+Stack: **Java 11+**, **Spring(Core, Boot, MVC, Data, Security)**, **Lombok**, **MapStruct**, any relational database.
 
 Peculiarities:
 
@@ -58,10 +56,15 @@ Run application from command line:
 ## API endpoints
 
 1) http://localhost:8080/login **GET** - performs login
-2) http://localhost:8080/logout **POST** - performs logout
-3) http://localhost:8080/registration **POST** - registers new user
-4) http://localhost:8080/userpool **GET** - shows all the users in Database
-5) http://localhost:8080/userpool/user/{id} **GET** - shows concrete user
-6) http://localhost:8080/userpool/update/{id} **PATCH** - changes concrete user data
-7) http://localhost:8080/userpool/update/{id} **DELETE** - deletes concrete user
 
+2) http://localhost:8080/logout **GET** - performs logout
+
+3) http://localhost:8080/registration **POST** - registers new user
+
+4) http://localhost:8080/userpool **GET** - shows all the users in database
+
+5) http://localhost:8080/userpool/get/{id} **GET** - shows concrete user
+
+6) http://localhost:8080/userpool/update/{id} **PATCH** - updates concrete user data
+
+7) http://localhost:8080/userpool/delete/{id} **DELETE** - deletes concrete user

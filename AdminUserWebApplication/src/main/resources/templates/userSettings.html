@@ -3,6 +3,7 @@
       xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>InnowiseAdminUserApplication</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" type="text/css">
     <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
     <script crossorigin="anonymous"
@@ -10,30 +11,47 @@
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1 style="text-align: center">List of properties to change:</h1>
-<div style="text-align: center">
-    <p th:text=" 'Current user: ' + ${user.getUsername()}"></p>
-    <form th:action="@{/userpool/update/{id}(id = ${user.id})}" th:method="POST">
-        <div>
-            <input placeholder="Full name" th:name="fullName" type="text"/>
+<h1 class="title">List of properties to change:</h1>
+<div class="form-wrapper">
+    <p th:text=" 'Current user: ' + ${userDTO.getUsername()}"></p>
+    <form th:action="@{/userpool/update/{id}(id = ${userDTO.id})}" th:method="PATCH" th:object="${userDTO}">
+        <div class="form-list">
+            <div class="form-item">
+                <input class="input" name="fullName" placeholder="Full name" type="text"/>
+                <span class="validationError input-validation-error"
+                      th:errors="*{fullName}"
+                      th:if="${#fields.hasErrors('fullName')}">User error</span>
+            </div>
+            <div class="form-item">
+                <input class="input" name="position" placeholder="Position" type="text"/>
+                <span class="validationError input-validation-error"
+                      th:errors="*{position}"
+                      th:if="${#fields.hasErrors('position')}">User error</span>
+            </div>
+            <div class="form-item">
+                <input class="input" name="department" placeholder="Department" type="text"/>
+                <span class="validationError input-validation-error"
+                      th:errors="*{department}"
+                      th:if="${#fields.hasErrors('department')}">User error</span>
+            </div>
+            <div class="form-item">
+                <input class="input" name="address" placeholder="Address" type="text"/>
+                <span class="validationError input-validation-error"
+                      th:errors="*{address}"
+                      th:if="${#fields.hasErrors('address')}">User error</span>
+            </div>
+            <div class="form-item">
+                <input class="input" name="phoneNumber" placeholder="Phone number" type="text"/>
+                <span class="validationError input-validation-error"
+                      th:errors="*{phoneNumber}"
+                      th:if="${#fields.hasErrors('phoneNumber')}">User error</span>
+            </div>
+            <input class="button" type="submit" value="Submit changes"/>
         </div>
-        <div>
-            <input placeholder="Position" th:name="position" type="text"/>
-        </div>
-        <div>
-            <input placeholder="Department" th:name="department" type="text"/>
-        </div>
-        <div>
-            <input placeholder="Address" th:name="address" type="text"/>
-        </div>
-        <div>
-            <input placeholder="Phone number" th:name="phoneNumber" type="text"/>
-        </div>
-        <input type="submit" value="Submit changes"/>
     </form>
     <p></p>
-    <form th:action="@{/userpool/update/{id}(id = ${user.id})}" th:method="DELETE">
-        <input type="submit" value="Delete"/>
+    <form th:action="@{/userpool/delete/{id}(id = ${userDTO.id})}" th:method="DELETE">
+        <input class="button" type="submit" value="Delete"/>
     </form>
     <p></p>
 

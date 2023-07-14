@@ -15,8 +15,6 @@ public interface UserMapper {
     @Mapping(target = "password", ignore = true)
     UserDTO toDTO(User user);
 
-//    User toUser(UserDTO userDTO);
-
     @IterableMapping(qualifiedByName = "userDTOWithoutPassword")
     List<UserDTO> toDTOs(List<User> users);
 

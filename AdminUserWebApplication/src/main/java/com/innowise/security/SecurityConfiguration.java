@@ -31,12 +31,14 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeHttpRequests()
-                .antMatchers("/userpool", "/userpool/user/{id}")
+                .antMatchers("/userpool", "/userpool/get/{id}")
                 .hasAnyAuthority(ADMIN.name(), USER.name())
-                .antMatchers("/registration", "/userpool/update/{id}")
+                .antMatchers("/registration", "/userpool/update/{id}", "/userpool/delete/{id}")
                 .hasAnyAuthority(ADMIN.name())
 //                .antMatchers("/registration")
 //                .permitAll()
+                .antMatchers("/**/*.css")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
             .and()

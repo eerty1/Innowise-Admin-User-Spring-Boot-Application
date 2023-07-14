@@ -1,10 +1,30 @@
 spring:
   datasource:
-    url: #your database url
-    username: #your database username
-    password: #your database password
+    url: your database credentials
+    username: your database credentials
+    password: your database credentials
   mvc:
     hiddenmethod:
       filter:
         enabled: true
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
 
+
+crud-queries:
+  select-all-from-user-pool-order-by-id-ascending: select * from user_pool order by id asc
+  select-all-from-user-pool-where-id: select * from user_pool where id = ?
+  select-all-from-user-pool-where-username: select * from user_pool where username = ?
+  insert-new-user-into-user-pool: insert into user_pool (username, password, role, full_name, position, department, address, phone_number) values(?, ?, ?, ?, ?, ?, ?, ?)
+  update-user-where-id: update user_pool set id = ?, username = ?, password = ?, role = ?, full_name = ?, position = ?, department = ?, address = ?, phone_number = ? where id = ?
+  delete-user-where-id: delete from user_pool where id = ?
+
+
+response-messages:
+  success:
+    user-logged-in: Logged in successfully
+    user-deleted: Successfully deleted
+  failure:
+    invalid-credentials: Invalid username or password
+    no-such-user: User not found
